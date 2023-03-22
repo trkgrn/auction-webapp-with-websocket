@@ -60,6 +60,10 @@
               "node_modules/admin-lte/plugins/pdfmake/vfs_fonts.js",
               "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js",
               "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.print.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "sockjs-client",
+              "stompjs"
             ]
           },
           "configurations": {
