@@ -1,0 +1,14 @@
+<nav class="main-header navbar navbar-expand navbar-white navbar-light ">
+
+  <a *ngIf="authService.isSignedIn()" class="navbar-brand">
+    <span  class="brand-text font-weight-light">Username: {{user?.username!}}</span>
+  </a>
+
+  <ul class="navbar-nav ml-auto">
+    <li *ngIf="authService.isSignedIn()" class="nav-item">
+      <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" (click)="logout()" role="button">
+        <i class="fas fa-sign-in-alt"></i>
+      </a>
+    </li>
+  </ul>
+</nav>

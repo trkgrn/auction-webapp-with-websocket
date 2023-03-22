@@ -62,6 +62,6 @@ export class AuthService {
   }
 
   getAuthenticatedUser() {
-    return this.http.get("/user/findByJwt");
+    return this.http.get("/auth/user");
   }
 }
