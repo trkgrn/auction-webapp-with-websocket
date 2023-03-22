@@ -1,0 +1,82 @@
+<!--<pre>{{products | json}}</pre>-->
+<div class="row h-100 justify-content-center align-items-center mt-3">
+  <div class="col-12">
+    <div class="row h-100 justify-content-center align-items-center m-0">
+      <div class="col-10">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-store"></i>
+              Products
+            </h3>
+          </div>
+          <div class="card-body pad table-responsive">
+            <div class="container">
+              <div class="row">
+                <div *ngFor="let product of products" class="col-12 col-sm-8 col-md-6 col-lg-4">
+                  <div class="card">
+
+                    <div class="card-header">
+                      <h4 class="card-title">{{product.productName}}</h4>
+
+                    </div>
+                    <!--                    <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">-->
+                    <div class="card-body">
+                      <h6 class="card-subtitle mb-2 text-muted">Starting Bid: ${{product.startPrice}}</h6>
+                      <p class="card-text">{{product.description}}</p>
+                      <div class="d-flex flex-fill">
+                        <input [(ngModel)]="product.increment" type="number" class="form-control"
+                               placeholder="Increase to price" min="1">
+                      </div>
+                    </div>
+
+                    <div class="card-footer">
+                      <div class="buy d-flex justify-content-start align-items-center">
+                        <div class="price text-success"><h5 class="mt-4">${{product.currentPrice}}</h5></div>
+                        <div class="ml-auto">
+                          <a class="btn btn-primary mt-3" data-toggle="modal" data-target="#showAllBidsModal"
+                             (click)="showAllBids(product)"><i class="fas fa-list-alt"></i> Show Bids</a>
+                          <a class="btn btn-danger mt-3 ml-1" (click)="bid(product)"><i class="fas fa-check"></i>
+                            Bid</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="showAllBidsModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{selectedProduct?.productName}}]</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre>{{selectedProduct?.bids | json}}</pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

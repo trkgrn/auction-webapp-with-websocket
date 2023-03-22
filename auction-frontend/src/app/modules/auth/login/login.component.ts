@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('role', resp.role as string);
         }
 
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/products');
 
       }).catch((err: any) => {
         if (err.status === 403){

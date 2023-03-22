@@ -10,18 +10,24 @@ import {AuthService} from "./services/auth.service";
 import {RoleService} from "./services/role.service";
 import {JwtInterceptor} from "./interceptors/JwtInterceptor";
 import { HomeComponent } from './modules/home/home.component';
+import { ProductListComponent } from './modules/product-list/product-list.component';
+import {FormsModule} from "@angular/forms";
+import { NavbarComponent } from './modules/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ProductListComponent,
+    NavbarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        RouterModule,
+        FormsModule
+    ],
   providers: [AuthGuard, AuthService, RoleService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptor,
