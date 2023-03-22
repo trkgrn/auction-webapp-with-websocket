@@ -1,5 +1,6 @@
 package com.trkgrn.auctionbackend.api.service;
 
+import com.trkgrn.auctionbackend.api.exception.ExpiredJwtExc;
 import com.trkgrn.auctionbackend.api.exception.SQLExc;
 import com.trkgrn.auctionbackend.api.model.entity.Token;
 import com.trkgrn.auctionbackend.api.model.entity.User;
@@ -80,6 +81,17 @@ public class AuthService {
         String token = request.getHeader("Authorization").substring(7);
         String username = jwtUtil.extractUsername(token);
         tokenService.delete(username);
+    }
+
+    public User getAuthenticatedUser() {
+        if (request.getHeader("Authorization") == null) {
+            throw new ExpiredJwtExc("Jwt Not Found");
+        }
+        else {
+            String jwt = request.getHeader("Authorization").substring(7);
+            String username = jwtUtil.extractUsername(jwt);
+            return this.userService.findByUsername(username);
+        }
     }
 
 }

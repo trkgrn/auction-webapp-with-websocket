@@ -62,19 +62,4 @@ public class UserService {
         return this.userRepository.findByUsername(tckNo);
     }
 
-    public User findByJwt() {
-        if (request.getHeader("Authorization") == null) {
-            throw new ExpiredJwtExc("Jwt Not Found");
-        }
-        else {
-            String jwt = request.getHeader("Authorization").substring(7);
-            String username = jwtUtil.extractUsername(jwt);
-            return this.userRepository.findByUsername(username);
-        }
-    }
-
-
-
-
-
 }

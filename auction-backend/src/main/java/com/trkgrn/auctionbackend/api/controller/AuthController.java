@@ -44,4 +44,9 @@ public class AuthController {
     public void logout() {
         authService.logout();
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<UserDto> getUser() {
+        return new ResponseEntity<UserDto>(modelMapper.map(authService.getAuthenticatedUser(), UserDto.class), HttpStatus.OK);
+    }
 }
