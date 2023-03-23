@@ -1,0 +1,94 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#productFormModal"><i class="fa fa-plus"></i> New</button>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="tbl_product" class="table table-hover">
+              <thead class="thead-light">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Start Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{product.productId}}</td>
+                <td>{{product.productName}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.startPrice}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div> <!-- /.container-fluid -->
+</section> <!-- /.content -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="productFormModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title">Product Form Modal</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <label>Product Name</label>
+        <div [formGroup]="form">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Product Name" formControlName="productName"
+                   [required]="true">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-tag"></span>
+              </div>
+            </div>
+          </div>
+          <label>Description</label>
+          <div class="input-group mb-3">
+            <textarea type="text" class="form-control" placeholder="Description" formControlName="description"
+                   [required]="true"></textarea>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-signature"></span>
+              </div>
+            </div>
+          </div>
+          <label>Starting Price</label>
+          <div class="input-group mb-3">
+            <input type="number" min="1" class="form-control" placeholder="Starting Price" formControlName="startPrice"
+                   [required]="true">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-dollar-sign"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /.modal-body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="form.reset()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addProduct()" [disabled]="form.invalid">Save</button>
+      </div>
+      </div>
+
+    </div>
+  </div>
