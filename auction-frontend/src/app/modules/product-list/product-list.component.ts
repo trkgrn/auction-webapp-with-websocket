@@ -47,6 +47,7 @@ export class ProductListComponent implements OnInit {
       const bid: Bid = new Bid('', this.user?.username, product.currentPrice! + product.increment!,date);
       console.log(bid)
       this.sendBid(bid, product.productId!);
+
     }
   }
 
@@ -62,10 +63,17 @@ export class ProductListComponent implements OnInit {
       stompClient!.subscribe(
         destination,
         async (response) => {
-          console.log("RESP: "+response);
-          await this.productService.getAll().then((data:Product[]) => {
-            this.products = data;
+          let product: Product = JSON.parse(response.body);
+          this.products = this.products.map((p:Product) => {
+            if (p.productId === product.productId) {
+              p = product;
+            }
+            return p;
           });
+
+            if (this.selectedProduct?.productId === productId) {
+              this.selectedProduct = this.products.find((product:Product) => product.productId === productId);
+            }
         }
       );
     });

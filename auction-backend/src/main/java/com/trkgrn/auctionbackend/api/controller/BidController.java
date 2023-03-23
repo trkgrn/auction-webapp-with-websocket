@@ -30,6 +30,6 @@ public class BidController {
         if (savedProduct.isEmpty()) {
             return;
         }
-        messagingTemplate.convertAndSend("/topic/products/" + productId, bid);
+        messagingTemplate.convertAndSend("/topic/products/" + productId, savedProduct.get());
     }
 }

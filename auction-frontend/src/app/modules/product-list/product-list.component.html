@@ -2,7 +2,7 @@
 <div class="row h-100 justify-content-center align-items-center mt-3">
   <div class="col-12">
     <div class="row h-100 justify-content-center align-items-center m-0">
-      <div class="col-10">
+      <div class="col-9">
         <div class="card card-primary card-outline">
           <div class="card-header">
             <h3 class="card-title">
@@ -13,18 +13,15 @@
           <div class="card-body pad table-responsive">
             <div class="container">
               <div class="row">
-                <div *ngFor="let product of products" class="col-12 col-sm-8 col-md-6 col-lg-4">
-                  <div class="card">
-
+                <div *ngFor="let product of products" class="col-12 col-sm-auto col-md-6 col-lg-4">
+                  <div class="card h-100">
                     <div class="card-header">
                       <h4 class="card-title">{{product.productName}}</h4>
-
                     </div>
-                    <!--                    <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">-->
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                       <h6 class="card-subtitle mb-2 text-muted">Starting Bid: ${{product.startPrice}}</h6>
                       <p class="card-text">{{product.description}}</p>
-                      <div class="d-flex flex-fill">
+                      <div class="mt-auto">
                         <input [(ngModel)]="product.increment" type="number" class="form-control"
                                placeholder="Increase to price" min="1">
                       </div>
@@ -58,20 +55,30 @@
 <!-- Modal -->
 <div class="modal fade" id="showAllBidsModal" tabindex="-1" role="dialog"
      aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{selectedProduct?.productName}}]</h5>
+        <h6 class="modal-title">{{selectedProduct?.productName}}</h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <pre>{{selectedProduct?.bids | json}}</pre>
+        <table class="table table-bordered">
+          <tr>
+            <th>Username</th>
+            <th>Bid</th>
+            <th>Time</th>
+          </tr>
+          <tr *ngFor="let bid of selectedProduct?.bids">
+            <td>{{bid.bidderUsername}}</td>
+            <td>${{bid.bidPrice}}</td>
+            <td>{{bid.bidDate}}</td>
+          </tr>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
