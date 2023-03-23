@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../../models/entity/Product";
-import {ProductService} from "../../services/product.service";
-import {Bid} from "../../models/entity/Bid";
+import {Product} from "../../../models/entity/Product";
+import {ProductService} from "../../../services/product.service";
+import {Bid} from "../../../models/entity/Bid";
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
-import {environment} from "../../../environments/environment";
-import {User} from "../../models/entity/User";
-import {AuthService} from "../../services/auth.service";
+import {environment} from "../../../../environments/environment";
+import {User} from "../../../models/entity/User";
+import {AuthService} from "../../../services/auth.service";
 
 declare var $: any;
 @Component({
