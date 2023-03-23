@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
         if (match) {
           return true;
         } else {
-          this.router.navigate(["/error/forbidden"]);
+          this.router.navigate(["/products"]);
           return false;
         }
       }

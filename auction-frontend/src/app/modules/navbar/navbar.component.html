@@ -4,11 +4,20 @@
     <span  class="brand-text font-weight-light">Username: {{user?.username!}}</span>
   </a>
 
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="products/list" class="nav-link">Product List</a>
+    </li>
+    <li *ngIf="authService.getRole() === 'ADMIN'" class="nav-item">
+      <a href="products/add" class="nav-link">Add Product</a>
+  </ul>
+
   <ul class="navbar-nav ml-auto">
     <li *ngIf="authService.isSignedIn()" class="nav-item">
       <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" (click)="logout()" role="button">
         <i class="fas fa-sign-in-alt"></i>
       </a>
     </li>
+
   </ul>
 </nav>

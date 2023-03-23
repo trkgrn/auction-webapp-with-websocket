@@ -10,7 +10,6 @@ import {AuthService} from "./services/auth.service";
 import {RoleService} from "./services/role.service";
 import {JwtInterceptor} from "./interceptors/JwtInterceptor";
 import { HomeComponent } from './modules/home/home.component';
-import { ProductListComponent } from './modules/product-list/product-list.component';
 import {FormsModule} from "@angular/forms";
 import { NavbarComponent } from './modules/navbar/navbar.component';
 
@@ -18,7 +17,6 @@ import { NavbarComponent } from './modules/navbar/navbar.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductListComponent,
     NavbarComponent
   ],
     imports: [
