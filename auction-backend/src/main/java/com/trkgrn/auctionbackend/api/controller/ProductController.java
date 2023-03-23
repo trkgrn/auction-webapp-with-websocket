@@ -1,6 +1,7 @@
 package com.trkgrn.auctionbackend.api.controller;
 
 import com.trkgrn.auctionbackend.api.model.entity.Product;
+import com.trkgrn.auctionbackend.api.model.payload.request.AddProductRequest;
 import com.trkgrn.auctionbackend.api.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> saveProduct(@RequestBody AddProductRequest product) {
         Optional<Product> savedProduct = productService.saveProduct(product);
         if (savedProduct.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

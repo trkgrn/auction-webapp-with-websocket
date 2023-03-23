@@ -2,6 +2,7 @@ package com.trkgrn.auctionbackend.api.service;
 
 import com.trkgrn.auctionbackend.api.model.entity.Bid;
 import com.trkgrn.auctionbackend.api.model.entity.Product;
+import com.trkgrn.auctionbackend.api.model.payload.request.AddProductRequest;
 import com.trkgrn.auctionbackend.api.repository.ProductRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,13 @@ public class ProductService {
         return productRepository.findAll(Sort.by(Sort.Direction.ASC, "productId"));
     }
 
-    public Optional<Product> saveProduct(Product product) {
-        return Optional.of(productRepository.save(product));
+    public Optional<Product> saveProduct(AddProductRequest product) {
+        Product productToSave = new Product();
+        productToSave.setProductName(product.getProductName());
+        productToSave.setDescription(product.getDescription());
+        productToSave.setStartPrice(product.getStartPrice());
+        productToSave.setCurrentPrice(product.getStartPrice());
+        return Optional.of(productRepository.save(productToSave));
     }
 
     public Optional<Product> getProductById(Long id) {
