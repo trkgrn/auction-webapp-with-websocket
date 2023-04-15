@@ -63,6 +63,12 @@ Install project dependencies
 * Database
   * PostgreSQL
   * Redis
+  
+## Screenshots
+
+#### Auction Simulation
+![Live-Auction](https://raw.githubusercontent.com/trkgrn/auction-webapp-with-websocket/master/pics/live-auction.gif?token=GHSAT0AAAAAAB74I6GUOWAVMJ64QENUONCOZB2RFZQ)
+  
 ## Author
 
 * Github: [@trkgrn](https://github.com/trkgrn)
